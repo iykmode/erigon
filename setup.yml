@@ -1,0 +1,44 @@
+# setup.yml
+---
+  - hosts: appserver
+    become: yes
+    tasks:
+    - name: Set Hostname of Server 
+      hostname: name=eth-node
+
+    - name: Creates directory
+      file:
+        path: /erigon
+        state: directory
+        owner: root
+        group: root
+        mode: 0777
+
+    roles:
+    - role: network
+      network_ether_interfaces:
+      - device: eth1
+        bootproto: static
+        cidr: 192.168.1.50/24
+
+  - name: Installing Nomad
+    hosts: appserver
+    become: yes
+    become_user: root
+    roles:
+    - { role: brianshumate.nomad }  
+    tasks: # remove existing files (will be recreated by the role)
+    - name: Remove client.hcl file
+      file:
+        path: /etc/nomad.d/client.hcl
+        state: absent
+    - name: Remove base.hcl file
+      file:
+        path: /etc/nomad.d/base.hcl
+        state: absent
+    - name: Replace nomad.hcl file
+      copy:
+        src: ./files/nomad.hcl
+        dest: /etc/nomad.d/nomad.hcl
+    - name: Start Nomad
+      service: name=nomad state=started enabled=yes

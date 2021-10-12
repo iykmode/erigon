@@ -1,0 +1,24 @@
+# main.yml: playbook to run everything
+---
+  - hosts: appserver
+    become: yes
+    roles:
+    - role: prep_server
+    - role: network
+      network_ether_interfaces:
+      - device: eth1
+        bootproto: static
+        cidr: 192.168.1.50/24
+#  - hosts: appserver
+#    become: yes
+    roles:
+    - { role: brianshumate.nomad }
+
+    task: # deploy job to target server and run it
+    - name: Transfer job file
+      copy:
+        src: ./files/job.nomad
+        dest: /home/ubuntu
+
+    - name: Run Nomad job
+      command: nomad job run job.nomad

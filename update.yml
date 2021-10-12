@@ -1,0 +1,12 @@
+# update.yml
+---
+  - hosts: appserver
+    become: yes
+    tasks:
+    - name: Update Target Server
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'curl', 'ca-certificates', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+

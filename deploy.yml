@@ -1,0 +1,12 @@
+# setup.yml
+---
+  - hosts: appserver
+    become: yes
+    tasks:
+    - name: Transfer job file
+      copy:
+        src: ./files/job.nomad
+        dest: /home/ubuntu
+
+    - name: Run Nomad job
+      command: nomad job run job.nomad

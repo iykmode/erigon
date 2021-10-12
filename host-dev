@@ -1,0 +1,8 @@
+# host-dev
+
+[appserver] 
+#dev1 ansible_host=185.232.76.26
+dev2 ansible_host=54.75.93.100
+
+[local]
+control ansible_connection=local
