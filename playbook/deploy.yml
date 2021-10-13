@@ -5,7 +5,7 @@
     tasks:
     - name: Transfer job file
       copy:
-        src: ./files/job.nomad
+        src: ../files/job.nomad
         dest: /home/ubuntu
 
     - name: Run Nomad job

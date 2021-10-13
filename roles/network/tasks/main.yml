@@ -158,5 +158,5 @@
      bridge_result is changed or
      bridge_port_result is changed)
 
-- name: Include Docker installation
-  include: docker.yml
+#- name: Include Docker installation
+#  include: docker.yml

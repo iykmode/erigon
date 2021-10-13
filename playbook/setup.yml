@@ -38,7 +38,7 @@
         state: absent
     - name: Replace nomad.hcl file
       copy:
-        src: ./files/nomad.hcl
+        src: ../files/nomad.hcl
         dest: /etc/nomad.d/nomad.hcl
     - name: Start Nomad
       service: name=nomad state=started enabled=yes
