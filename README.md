@@ -1,5 +1,8 @@
 
-## Steps to clone repo and run playbook
+### Steps to clone repo and run playbook
+
+## Clone repo
+
 Run the following commands to clone the repo and to change into the working directory respectively:
 
 1. git clone https://github.com/iykmode/erigon.git
