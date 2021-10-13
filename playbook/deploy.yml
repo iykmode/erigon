@@ -6,7 +6,7 @@
     - name: Transfer job file
       copy:
         src: ../files/job.nomad
-        dest: /home/ubuntu
+        dest: $PWD
 
     - name: Run Nomad job
       command: nomad job run job.nomad
