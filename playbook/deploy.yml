@@ -9,4 +9,4 @@
         dest: $PWD
 
     - name: Run Nomad job
-      command: nomad job run job.nomad
+      command: nomad job run job.nomad 

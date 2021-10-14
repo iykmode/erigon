@@ -1,7 +1,7 @@
 # host-dev
 
 [appserver] 
-dev1 ansible_host=<server_public_IP>
+dev1 ansible_host= <server_public_IP>
 
 [local]
 control ansible_connection=local
