@@ -58,7 +58,7 @@ job "erigon" {
         ]
       }
       resources {
-        cpu    = 500 # MHz
+        cpu    = 1000 # MHz
         memory = 4096 # MB
       }
     }
