@@ -147,10 +147,7 @@
   systemd:
     daemon_reload: true
   when: ansible_service_mgr == "systemd"
-
-#- name: Include config file modifications
-#  include: conf_files.yml
-
+  
 - name: Start Nomad
   service:
     name: nomad
